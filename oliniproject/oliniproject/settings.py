@@ -14,6 +14,9 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FRONTEND_DIR = os.path.join(BASE_DIR, 'frontend')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 
 # Quick-start development settings - unsuitable for production
@@ -25,7 +28,7 @@ SECRET_KEY = 'gqncgsf@1b)f-i_zt#j3@mlf!s98_ej@ka$_1#*)d#0w@q!s1f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "192.168.12.125", "hackathon.spdns.eu"]
+ALLOWED_HOSTS = ["localhost", "192.168.12.125", "hackathon.spdns.eu", "0.0.0.0"]
 
 
 # Application definition
