@@ -15,7 +15,7 @@ class AnimalSerializer(serializers.ModelSerializer):
     uuid=serializers.ReadOnlyField()
     name=serializers.CharField(required=True)
     description=serializers.CharField(required=False)
-    id_type = AnimalTypeSerializer(many=False, required=False)
+    id_type = AnimalTypeSerializer(many=False)
     status = serializers.CharField(required=False)
     #animal_type = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
     photo_path = serializers.CharField(required=False)
@@ -25,7 +25,7 @@ class AnimalSerializer(serializers.ModelSerializer):
         fields=['uuid', 'name', 'description', 'id_type', 'status', 'photo_path', ]
 
     def create(self, validated_data):
-        animal = Animal.create_animal(name = validated_data.get('name'), description=validated_data.get('description'), id_type=validated_data.get('id_type'))
+        animal = Animal.create_animal(name = validated_data.get('name'), description=validated_data.get('description'), type_name=validated_data.get('type_name'), status=validated_data.get('status'))
         return animal
 
     def to_representation(self, instance):
@@ -46,15 +46,10 @@ class AnimalsSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         response = {}
         data = super(Animal, self).to_representation(instance)
-        url = data['photo_path'] + AnimalPhoto.objects.filter(animal=data['uuid']).first()
+        url = data['photo_path'] + AnimalPhoto.objects.filter(animal=data['uuid']).first
 
         response['status'] = data['status']
         response['photo'] = urls
         response['uuid'] = data['uuid']
 
         return response
-
-class PhotoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=Animal
-        fields=['photo', ]
