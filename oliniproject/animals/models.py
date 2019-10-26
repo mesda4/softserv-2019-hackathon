@@ -14,10 +14,18 @@ class Animal(models.Model):
     description = models.TextField(blank=True, null=True)
     id_type = models.ForeignKey(AnimalType, on_delete=models.CASCADE)
     status = models.CharField(max_length=255, default="В поиске")
-    photo_path = models.CharField(max_length=255)
+    photo_path = models.CharField(max_length=255, null=True)
+    
     @classmethod
-    def create_animal;(cls, name, type_name, status):
-        
+    def create_animal(cls, name, type_name, status, description):
+        if description:
+            animal = Animal.create(name=name, description=description, status=status, id_type=AnimalType.objects.get(type=type_name))
+        else:
+            animal = Animal.create(name=name, status=status, id_type=AnimalType.objects.get(type=type_name))
+        path = ANIMAL_ROOT + "/" + animal.uuid
+        animal.photo_path = path
+        animal.save()
+        return animal
 
 class AnimalAdoption(models.Model):
     uuid=models.UUIDField(blank=False, default=uuid4, primary_key=True)

@@ -22,11 +22,11 @@ class AnimalSerializer(serializers.ModelSerializer):
 
     class Meta:
         model=Animal
-        fields=['uuid', 'name', 'description', 'id_type', 'status', 'animal_type', 'photo_path', ]
+        fields=['uuid', 'name', 'description', 'id_type', 'status', 'photo_path', ]
 
     def create(self, validated_data):
-        animal = Animal.create_animal();
-        return animal;
+        animal = Animal.create_animal(name = validated_data.get('name'), description=validated_data.get('description'), type_name=validated_data.get('type_name'), status=validated_data.get('status'))
+        return animal
 
     def to_representation(self, instance):
         response={}
@@ -41,7 +41,7 @@ class AnimalsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model=Animal
-        fields=['uuid', 'name', 'description', 'id_type', 'status', 'animal_type', 'photo_path', ]
+        fields=['uuid', 'name', 'description', 'id_type', 'status', 'photo_path', ]
 
     def to_representation(self, instance):
         response = {}
