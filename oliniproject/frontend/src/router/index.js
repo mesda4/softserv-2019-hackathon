@@ -2,19 +2,20 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "../store";
 
-import {getToken} from "../helpers/auth-helper";
+import { getToken } from "../helpers/auth-helper";
 
-import Home from "../views/Home.vue"
-import Needs from "../modules/needs/Table.vue"
-Vue.use(VueRouter)
+import Home from "../views/Home.vue";
+import Needs from "../modules/needs/Table.vue";
+import Contacts from "../views/Contacts.vue";
+
+Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
     name: "home",
     component: Home,
-    children:
-    [
+    children: [
       {
         path: "",
         component: () => import("../modules/pets/Pets")
@@ -43,6 +44,10 @@ const routes = [
       {
         path: 'needs',
         component: Needs
+      },
+      {
+        path: "contacts",
+        component: Contacts
       },
       {
         path: "pets/:id",
@@ -75,43 +80,47 @@ const routes = [
       permissions: ["guest"]
     }
   }
-]
+];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes
-})
+});
 
 router.beforeEach((to, from, next) => {
-  const {permissions} = to.meta;
+  const { permissions } = to.meta;
 
-  if(permissions) {
+  if (permissions) {
     const token = getToken();
     let role = "guest";
 
-    if(token) {
-      if(to.path === "/login" || to.path === "/register") {
-        return next({path: "/"});
+    if (token) {
+      if (to.path === "/login" || to.path === "/register") {
+        return next({ path: "/" });
       }
 
       role = store.getters.getRole;
       const hasPermission = permissions.includes(role);
 
+<<<<<<< HEAD
       if(!hasPermission) {
         return next({path: "/"});
+=======
+      if (!hasPermission) {
+        return next({ path: "/" });
+>>>>>>> d0d4fb6faf1b890ef057ddb123c172184a44e4e5
       }
-    }
-    else {
-      if(!permissions.includes(role)) {
-        if(to.path !== "/login" && to.path !== "/register") {
-          return next({path: "/login"});
+    } else {
+      if (!permissions.includes(role)) {
+        if (to.path !== "/login" && to.path !== "/register") {
+          return next({ path: "/login" });
         }
       }
     }
   }
-  
+
   next();
 });
 
-export default router
+export default router;

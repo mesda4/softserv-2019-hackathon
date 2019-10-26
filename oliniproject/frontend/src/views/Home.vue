@@ -10,13 +10,13 @@
             <template slot="body">
               <ul>
                 <li class="dropitem">
-                  <router-link to="#">Животные</router-link>
+                  <router-link to="/">Животные</router-link>
                 </li>
                 <li class="dropitem">
-                  <router-link to="#">Нужды</router-link>
+                  <router-link to="/needs">Нужды</router-link>
                 </li>
                 <li class="dropitem">
-                  <router-link to="#">Контакты</router-link>
+                  <router-link to="/contacts">Контакты</router-link>
                 </li>
               </ul>
             </template>
@@ -86,9 +86,14 @@ export default {
   justify-content: center;
 }
 .content {
+<<<<<<< HEAD
   max-width: 992px;
   margin: 0 auto;
   padding: 3rem;
+=======
+  padding: 6rem;
+  width: 100%;
+>>>>>>> d0d4fb6faf1b890ef057ddb123c172184a44e4e5
 }
 </style>
 
@@ -109,5 +114,6 @@ export default {
 
 a {
   color: black;
+  text-decoration: underline;
 }
 </style>
