@@ -1,14 +1,21 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
 import Home from "../views/Home.vue"
-
+import Needs from "../modules/needs/Table.vue"
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: "/",
     name: "home",
-    component: Home
+    component: Home,
+    children: 
+    [
+      {
+      path: 'needs',
+      component: Needs
+      },
+    ]
   },
   {
     path: "/login",
