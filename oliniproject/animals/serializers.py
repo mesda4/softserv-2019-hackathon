@@ -45,11 +45,12 @@ class AnimalsSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         response = {}
-        data = super(Animal, self).to_representation(instance)
-        url = data['photo_path'] + AnimalPhoto.objects.filter(animal=data['uuid']).first()
+        data = super(AnimalsSerializer, self).to_representation(instance)
+        #url = data['photo_path'] + AnimalPhoto.objects.filter(animal=data['uuid']).first().photo
+        url = data['photo_path'] + AnimalPhoto.objects.filter(animal=Animal.objects.get(uuid=data['uuid'])).first().photo
 
         response['status'] = data['status']
-        response['photo'] = urls
+        response['photo'] = url
         response['uuid'] = data['uuid']
 
         return response
