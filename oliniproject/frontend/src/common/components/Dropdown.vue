@@ -44,10 +44,7 @@ export default {
 <template>
   <div id="vue-template-dropdown">
     <div class="dropdown" :class="{'open': open}">
-      <a @click="open = !open">
-        {{selectedValue}}
-        <b class="caret"></b>
-      </a>
+      <a @click="open = !open">Select</a>
       <ul class="dropdown-menu">
         <li v-for="(option,i) in options" :key="i">
           <a @click="handleClick(i)">{{option.value}}</a>
@@ -56,4 +53,12 @@ export default {
     </div>
   </div>
 </template>
+
+<style>
+.icon {
+  height: 2rem;
+  filter: invert(1);
+  margin: 0 5px;
+}
+</style>
   
