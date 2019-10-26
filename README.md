@@ -16,7 +16,8 @@ OLINI team project at SoftServ 2019 Students Hackathon
 - register/  
 	login/  
 -	info/  
-\t/animal/  
+
+/animal/  
 -	list/  
 -	list1/  
 -	type/  
