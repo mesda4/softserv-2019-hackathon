@@ -93,6 +93,7 @@ export default {
 }
 .button {
   cursor: pointer;
+  height: 50px;
   margin: 0 10px;
   display: flex;
   align-items: center;

@@ -31,7 +31,7 @@ const routes = [
         path: "adminPanel",
         component: () => import("../views/AdminPanel.vue"),
         meta: {
-          permissions: ["stuff"]
+          permissions: ["user", "stuff"]
         }
       },
       {

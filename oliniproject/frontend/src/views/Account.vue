@@ -25,7 +25,7 @@
             </button>
         </div> -->
         <!-- ADMIN -->
-        <div v-if="user.is_stuff">
+        <div v-if="!user.is_stuff">
             <div class="btn-wrapper">
                 <router-link
                     to="/adminPanel"

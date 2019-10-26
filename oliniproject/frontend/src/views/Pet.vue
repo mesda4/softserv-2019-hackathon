@@ -4,11 +4,11 @@
     <div class="main-img">
       <img src="../1/1.1.jpg" />
 
-      <div>
+      <!-- <div>
         <button @click="addPet(pet.id)" class="add-pet-btn round-btn waves-effect waves-light btn">
           <i class="material-icons">add</i>
         </button>
-      </div>
+      </div> -->
     </div>
 
     <div class="inner-wrap">
