@@ -12,8 +12,9 @@ OLINI team project at SoftServ 2019 Students Hackathon
 Структура запросов:   
 
 /admin/  
-/auth/	register/  
--	login/  
+/auth/	
+- register/  
+	login/  
 -	info/  
 /animal/  
 -	list/  
@@ -24,10 +25,10 @@ OLINI team project at SoftServ 2019 Students Hackathon
 
 Content-Type: application/json  
 {  
--    "user":   
--    {  
---        "name": "user",  
---        "password": "password"  
--    }  
+|    "user":   
+|    {  
+||        "name": "user",  
+||        "password": "password"  
+|    }  
 }  
 
