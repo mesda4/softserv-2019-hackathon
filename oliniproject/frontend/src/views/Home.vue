@@ -5,10 +5,26 @@
         <span class="button wide">
           <img class="icon" src="../assets/orphanage_logo.svg" />
           <span>Приют</span>
+          <DropDown>
+            <template slot="btn"></template>
+            <template slot="body">
+              <ul>
+                <li class="dropitem">
+                  <router-link to="#">Животные</router-link>
+                </li>
+                <li class="dropitem">
+                  <router-link to="#">Нужды</router-link>
+                </li>
+                <li class="dropitem">
+                  <router-link to="#">Контакты</router-link>
+                </li>
+              </ul>
+            </template>
+          </DropDown>
         </span>
       </span>
       <span class="left">
-        <span class="button">
+        <span class="button" @click="redirectLogin">
           <img class="icon" src="../assets/user.svg" />
           <span>Аккаунт</span>
         </span>
@@ -21,8 +37,12 @@
 </template>
 
 <script>
+// @ is an alias to /src
+import DropDown from "bp-vuejs-dropdown";
+
 export default {
-  name: "home"
+  name: "home",
+  components: { DropDown }
 };
 </script>
 
@@ -43,6 +63,7 @@ export default {
   margin-left: auto;
 }
 .button {
+  cursor: pointer;
   margin: 0 10px;
   display: flex;
   align-items: center;
@@ -51,13 +72,42 @@ export default {
   border: 1px solid white;
   border-radius: 4px;
 }
+.button:hover {
+  background-color: #404040;
+}
 .wide {
   width: 12rem;
   justify-content: center;
 }
 .content {
+<<<<<<< HEAD
   max-width: 992px;
   margin: 0 auto;
   padding: 3rem;
+=======
+  margin: 3rem;
+  width: 100%;
+  padding: 0 15%;
+>>>>>>> b24fb1a947c1a4c4f6acc20d3e23ab34d62c04c8
+}
+</style>
+
+<style>
+.bp-dropdown {
+  margin-left: auto;
+}
+.bp-dropdown__btn {
+  border-radius: 5px;
+}
+.bp-dropdown__btn--active {
+  background-color: transparent;
+}
+.dropitem {
+  margin: 5px;
+  padding: 3px;
+}
+
+a {
+  color: black;
 }
 </style>
