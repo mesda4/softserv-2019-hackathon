@@ -13,6 +13,7 @@ button {
 }
   
 .block {
+    overflow: hidden;
     background: #fff;
     border-radius: 10px;
     @extend .z-depth-4;

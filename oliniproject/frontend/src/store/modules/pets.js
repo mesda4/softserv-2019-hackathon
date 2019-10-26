@@ -2,9 +2,6 @@
 import petService from "../../services/pets-service";
 import {setToken} from "../../helpers/auth-helper";
 
-// const token = localStorage.getItem("token");
-// let isAuthenticated = token ? true : false;
-
 export default {
   state: {
     pets: [

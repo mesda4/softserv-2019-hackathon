@@ -12,7 +12,10 @@ export default {
             resolve({
                 status: 200,
                 data: {
-                    img: "this is image1",
+                    img: "../assets/1/1.1.jpg",
+                    imgs: [
+
+                    ],
                     id,
                     status: "stat1",
                     name: "name of pet",

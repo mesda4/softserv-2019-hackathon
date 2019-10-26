@@ -49,8 +49,7 @@
 
             <!-- SUBMIT -->
             <div class="form__btn-wrap">
-                <button 
-                    :disabled="false" 
+                <button
                     type="submit" 
                     class="waves-effect waves-light btn" 
                     :class="{'button_unactive': false}"

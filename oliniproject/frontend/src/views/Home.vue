@@ -59,7 +59,8 @@ export default {
   justify-content: center;
 }
 .content {
-  width: 100%;
-  padding: 0 15%;
+  max-width: 992px;
+  margin: 0 auto;
+  padding: 3rem;
 }
 </style>
