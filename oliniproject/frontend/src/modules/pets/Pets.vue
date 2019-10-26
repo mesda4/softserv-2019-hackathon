@@ -1,5 +1,6 @@
 <template>
     <div class="pets">
+        <div v-if="pets.length === 0">NO PETS</div>
         <router-link
             tag="div"
             :to="'pets/' + pet.id"

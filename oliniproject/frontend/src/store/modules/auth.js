@@ -2,27 +2,21 @@ import router from "../../router";
 import userService from "../../services/user-service";
 import {setToken} from "../../helpers/auth-helper";
 
-// const token = localStorage.getItem("token");
-// let isAuthenticated = token ? true : false;
-
 export default {
   state: {
-    // isAuthenticated,
     user: {}
   },
   mutations: {
-    // setAuthState(state, cond) {
-    //   state.isAuthenticated = cond;
-    //   if(!cond) state.user = null;
-    // },
-
     setUser(state, userData) {
       state.user = userData;
     }
   },
   getters: {
     getRole(state) {
-        return state.user.is_staff ? "stuff" : "user";
+        if(Object.keys(state.user).length) {
+            return state.user.is_staff ? "stuff" : "user";
+        }
+        return "guest";
     }
   },
   actions: {
@@ -30,10 +24,9 @@ export default {
     login({commit, dispatch}, form) {
         userService.login(form)
         .then(res => {
-            console.log(res);
             if(res.status === 200) {
                 setToken(res.data.token);
-                // dispatch("getRole");
+                dispatch("getUser");
                 router.push("/");
             }
         })
@@ -46,8 +39,8 @@ export default {
         .then(res => {
             if(res.status === 200) {
                 setToken(res.data.token);
+                dispatch("getUser");
                 router.push("/");
-                // dispatch("getRole");
                 resolve();
             }
         })
@@ -59,8 +52,8 @@ export default {
       });
     },
 
-    getRole({commit}) {
-        userService.getRole()
+    getUser({commit}) {
+        userService.getUser()
         .then(res => {
             if(res.status === 200) {
                 commit("setUser", res.data);

@@ -20,11 +20,14 @@ export default {
     getPets({commit}) {
         petsService.getPets()
         .then(res => {
+            console.log(res);
             if(res.status === 200) {
                 commit("setPets", res.data);
             }
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+            console.log(err.response)
+        });
     },
 
     getPet({commit}, petId) {
@@ -45,6 +48,16 @@ export default {
             }
         })
         .catch(err => console.log(err));
+    },
+
+    createPet({commit}, form) {
+        petsService.createPet(form)
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => {
+            console.log(err.response);
+        });
     }
   }
 };

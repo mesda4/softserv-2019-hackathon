@@ -7,7 +7,7 @@
 <script>
 export default {
 	created() {
-		this.$store.dispatch("getRole");
+		this.$store.dispatch("getUser");
 	}
 }
 </script>

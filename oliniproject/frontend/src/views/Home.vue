@@ -24,10 +24,14 @@
         </span>
       </span>
       <span class="left">
-        <span class="button" @click="redirectLogin">
+        <router-link
+          class="button"
+          to="/account"
+          tag="span"
+        >
           <img class="icon" src="../assets/user.svg" />
           <span>Аккаунт</span>
-        </span>
+        </router-link>
       </span>
     </div>
     <div class="content">

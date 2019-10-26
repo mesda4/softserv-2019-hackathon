@@ -9,6 +9,7 @@ Vue.config.productionTip = false;
 import Vuelidate from "vuelidate";
 Vue.use(Vuelidate);
 
+
 // MATERIALIZE
 import "materialize-css/dist/js/materialize.min";
 

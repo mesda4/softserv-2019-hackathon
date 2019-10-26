@@ -18,6 +18,22 @@ button {
     border-radius: 10px;
     @extend .z-depth-4;
 }
+
+.title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.info {
+    margin: 10px 0;
+
+    & > div:first-child {
+        font-weight: bold;
+    }
+}
   
 // LOGIN
 .login-wrap {

@@ -108,11 +108,6 @@ export default {
     margin: 0 auto;
 }
 
-.title {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
 .toggle-gallery-btn {
     text-align: center;
     margin: 1rem 0;
@@ -155,14 +150,6 @@ export default {
     }
     to {
         transform: scaleY(1);
-    }
-}
-
-.info {
-    margin: 10px 0;
-
-    & > div:first-child {
-        font-weight: bold;
     }
 }
 </style>

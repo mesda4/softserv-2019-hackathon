@@ -20,6 +20,27 @@ const routes = [
         component: () => import("../modules/pets/Pets")
       },
       {
+        path: "account",
+        component: () => import("../views/Account.vue"),
+        meta: {
+          permissions: ["guest", "user", "stuff"]
+        }
+      },
+      {
+        path: "adminPanel",
+        component: () => import("../views/AdminPanel.vue"),
+        meta: {
+          permissions: ["guest", "user", "stuff"]
+        }
+      },
+      {
+        path: "addPet",
+        component: () => import("../views/AddPet.vue"),
+        meta: {
+          permissions: ["guest", "user", "stuff"]
+        }
+      },
+      {
         path: 'needs',
         component: Needs
       },
@@ -27,7 +48,9 @@ const routes = [
         path: "pets/:id",
         name: "pet",
         component: () => import("../views/Pet.vue"),
-        permissions: ["user", "stuff"]
+        meta: {
+          permissions: ["user", "stuff"]
+        }
       }
     ],
     meta: {
@@ -71,10 +94,10 @@ router.beforeEach((to, from, next) => {
       if(to.path === "/login" || to.path === "/register") {
         return next({path: "/"});
       }
-  
+
       role = store.getters.getRole;
       const hasPermission = permissions.includes(role);
-  
+
       if(!hasPermission) {
         return next({path: "/"});
       }
