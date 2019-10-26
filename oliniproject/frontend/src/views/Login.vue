@@ -85,16 +85,15 @@ export default {
     },
     methods: {
         submitHandler() {
-            this.$store.dispatch("login");
             if(this.$v.$invalid) {
                 this.$v.$touch();
                 return;
             }
-            // let form = {
-            //     email: this.email,
-            //     password: this.password
-            // };
-            // this.$store.dispatch("login", form);
+            let form = {
+                email: this.email,
+                password: this.password
+            };
+            this.$store.dispatch("login", form);
         }
     }
 }

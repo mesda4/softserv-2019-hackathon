@@ -1,4 +1,4 @@
-// import userService from "../../services/user-service";
+import userService from "../../services/user-service";
 // import router from "../../router";
 
 // const token = localStorage.getItem("token");
@@ -21,14 +21,13 @@ export default {
   },
   actions: {
     // REQUEST TO API
-    login() {
-        console.log(11);
-    //   userService.login(form)
-    //   .then(userData => {
-    //       commit("setUser", userData);
-    //       commit("setAuthState", true);
-    //       router.push("personalCabinet");
-    //     });
+    login(form) {
+        userService.login(form)
+        .then(userData => {
+            // commit("setUser", userData);
+            // commit("setAuthState", true);
+            // router.push("personalCabinet");
+        });
     },
 
     // register({commit}, form) {
