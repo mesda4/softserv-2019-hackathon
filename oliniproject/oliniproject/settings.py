@@ -30,7 +30,7 @@ SECRET_KEY = 'gqncgsf@1b)f-i_zt#j3@mlf!s98_ej@ka$_1#*)d#0w@q!s1f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "192.168.12.125", "hackathon.spdns.eu", "0.0.0.0"]
+ALLOWED_HOSTS = ["localhost", "192.168.12.125", "hackathon.spdns.eu", "0.0.0.0","127.0.0.1"]
 
 
 # Application definition
@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    'data'
+    'data',   
+    'needs'
 ]
 
 MIDDLEWARE = [
