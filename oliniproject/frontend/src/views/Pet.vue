@@ -154,15 +154,4 @@ export default {
     transform: scaleY(1);
   }
 }
-<<<<<<< HEAD
-=======
-
-.info {
-  margin: 10px 0;
-
-  & > div:first-child {
-    font-weight: bold;
-  }
-}
->>>>>>> d0d4fb6faf1b890ef057ddb123c172184a44e4e5
 </style>

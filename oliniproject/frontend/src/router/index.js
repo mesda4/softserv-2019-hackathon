@@ -103,13 +103,8 @@ router.beforeEach((to, from, next) => {
       role = store.getters.getRole;
       const hasPermission = permissions.includes(role);
 
-<<<<<<< HEAD
       if(!hasPermission) {
         return next({path: "/"});
-=======
-      if (!hasPermission) {
-        return next({ path: "/" });
->>>>>>> d0d4fb6faf1b890ef057ddb123c172184a44e4e5
       }
     } else {
       if (!permissions.includes(role)) {
