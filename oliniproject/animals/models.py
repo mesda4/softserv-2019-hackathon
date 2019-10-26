@@ -1,6 +1,7 @@
 from django.db import models
 from uuid import uuid4
-
+from django.conf import settings
+import os
 from data.models import *
 # Create your models here.
 
@@ -17,13 +18,14 @@ class Animal(models.Model):
     photo_path = models.CharField(max_length=255, null=True)
     
     @classmethod
-    def create_animal(cls, name, type_name, status, description):
+    def create_animal(cls, name, id_type, description):
         if description:
-            animal = Animal.create(name=name, description=description, status=status, id_type=AnimalType.objects.get(type=type_name))
+            animal = Animal(name=name, description=description, id_type=AnimalType.objects.get(type=id_type))
         else:
-            animal = Animal.create(name=name, status=status, id_type=AnimalType.objects.get(type=type_name))
-        path = ANIMAL_ROOT + "/" + animal.uuid
+            animal = Animal.create(name=name,  id_type=id_type)
+        path = settings.STATIC_ROOT + "/animals/" + animal.name
         animal.photo_path = path
+        os.mkdir(path)
         animal.save()
         return animal
 
