@@ -25,7 +25,7 @@ jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 
 # Create your views here.
 
-class RegistrationAPI(generics.GenericAPIView, CsrfExemptMixin):
+class RegistrationAPI(CsrfExemptMixin, generics.GenericAPIView):
     serializer_class = UserSerializer
     permission_classes = (permissions.AllowAny,)
 
@@ -54,7 +54,8 @@ class RegistrationAPI(generics.GenericAPIView, CsrfExemptMixin):
             return Response(response, status=200)
         return Response(serializer.errors, status=422)
 
-class LoginAPI(generics.GenericAPIView, CsrfExemptMixin):
+class LoginAPI(CsrfExemptMixin, generics.GenericAPIView):
+    serializer_class = UserSerializer
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, *args, **kwargs):
@@ -69,8 +70,8 @@ class LoginAPI(generics.GenericAPIView, CsrfExemptMixin):
                     payload = jwt_payload_handler(user)
                     token = jwt.encode(payload, settings.SECRET_KEY)
                     user_details = {}
-                    user_details['name'] = "%s %s" % (
-                    user.first_name, user.last_name)
+                    user_details['name'] = "%s" % (
+                    user.email)
                     user_details['token'] = token
                     user_logged_in.send(sender=user.__class__,
                                     request=request, user=user)
@@ -87,7 +88,7 @@ class LoginAPI(generics.GenericAPIView, CsrfExemptMixin):
             return Response(res)
 
 
-class UserInfo(generics.GenericAPIView, CsrfExemptMixin):
+class UserInfo(CsrfExemptMixin, generics.GenericAPIView):
     permission_classes = (permissions.IsAuthenticated ,)
     serializer_class = UserSerializer
 

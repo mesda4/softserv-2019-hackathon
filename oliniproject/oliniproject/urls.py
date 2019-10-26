@@ -17,11 +17,12 @@ from django.urls import path, include
 from django.contrib import admin
 from django.views.generic import TemplateView
 import data
-
+import animals
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('', TemplateView.as_view(template_name='index.html'), name='index'),
     path('auth/', include('data.urls')),
+    path('animal/', include('animals.urls'))
 ]
 

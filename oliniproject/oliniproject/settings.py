@@ -19,6 +19,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FRONTEND_DIR = os.path.join(BASE_DIR, 'frontend')
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+ANIMAL_ROOT = os.path.join(BASE_DIR, "animals/pic")
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -30,7 +32,7 @@ SECRET_KEY = 'gqncgsf@1b)f-i_zt#j3@mlf!s98_ej@ka$_1#*)d#0w@q!s1f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "192.168.12.125", "hackathon.spdns.eu", "0.0.0.0"]
+ALLOWED_HOSTS = ["localhost", "192.168.12.125", "hackathon.spdns.eu", "0.0.0.0", "127.0.0.1"]
 
 
 # Application definition
@@ -45,11 +47,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    'data'
+    'data',
+    'animals'
 ]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
