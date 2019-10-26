@@ -42,7 +42,9 @@ import DropDown from "bp-vuejs-dropdown";
 
 export default {
   name: "home",
-  components: { DropDown }
+  components: { 
+    DropDown 
+  }
 };
 </script>
 
@@ -80,15 +82,9 @@ export default {
   justify-content: center;
 }
 .content {
-<<<<<<< HEAD
   max-width: 992px;
   margin: 0 auto;
   padding: 3rem;
-=======
-  margin: 3rem;
-  width: 100%;
-  padding: 0 15%;
->>>>>>> b24fb1a947c1a4c4f6acc20d3e23ab34d62c04c8
 }
 </style>
 
