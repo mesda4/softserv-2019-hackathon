@@ -10,13 +10,13 @@
             <template slot="body">
               <ul>
                 <li class="dropitem">
-                  <router-link to="#">Животные</router-link>
+                  <router-link to="/">Животные</router-link>
                 </li>
                 <li class="dropitem">
-                  <router-link to="#">Нужды</router-link>
+                  <router-link to="/needs">Нужды</router-link>
                 </li>
                 <li class="dropitem">
-                  <router-link to="#">Контакты</router-link>
+                  <router-link to="/contacts">Контакты</router-link>
                 </li>
               </ul>
             </template>
@@ -24,7 +24,7 @@
         </span>
       </span>
       <span class="left">
-        <span class="button" @click="redirectLogin">
+        <span class="button">
           <img class="icon" src="../assets/user.svg" />
           <span>Аккаунт</span>
         </span>
@@ -80,15 +80,8 @@ export default {
   justify-content: center;
 }
 .content {
-<<<<<<< HEAD
-  max-width: 992px;
-  margin: 0 auto;
-  padding: 3rem;
-=======
-  margin: 3rem;
+  padding: 6rem;
   width: 100%;
-  padding: 0 15%;
->>>>>>> b24fb1a947c1a4c4f6acc20d3e23ab34d62c04c8
 }
 </style>
 
