@@ -2,28 +2,50 @@
     <table>
         <thead>
           <tr>
-              <th>Name</th>
-              <th>Item Name</th>
-              <th>Item Price</th>
+              <th v-for="(value, index) in headers" :key="index">
+                  {{value}}
+              </th>
           </tr>
         </thead>
 
         <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
+          <tr v-for="(value, index) in data" :key="index">
+              <td>{{value.type_name}}</td>
+              <td>{{value.name}}</td>
+              <td>{{value.quantity}}</td>
+              <td>
+                  <router-link v-if = "value.pet_name !== null" :to= "`/animals/${value.pet_id}`">
+                        {{value.pet_name}}
+                  </router-link>
+                  <span v-if = "value.pet_name == null">
+                      Для приюта
+                  </span>
+              </td>
           </tr>
         </tbody>
       </table>
 </template>
+
+<script>
+export default {
+    props: {
+        headers: {
+            type: Array,
+            default: () => ['Тип','Название','Количество', 'Для кого']
+        },
+        data: {
+            type: Array,
+            default: () =>
+            [
+                {
+                    type_name: 'Еда',
+                    name: 'Chicken nuggets',
+                    quantity: null,
+                    pet_name: null,
+                    pet_id: null
+                }
+            ]
+        }
+    }
+}
+</script>
