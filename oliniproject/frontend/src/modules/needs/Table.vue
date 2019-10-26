@@ -5,16 +5,14 @@
         <th v-for="(value, index) in headers" :key="index">{{value}}</th>
       </tr>
     </thead>
-
     <tbody>
       <tr v-for="(value, index) in data" :key="index">
         <td>{{value.type_name}}</td>
         <td>{{value.name}}</td>
-        <td>{{value.quantity}}</td>
         <td>
           <router-link
             v-if="value.pet_name !== null"
-            :to="`/animals/${value.pet_id}`"
+            :to="`/pets/${value.pet_id}`"
           >{{value.pet_name}}</router-link>
           <span v-if="value.pet_name == null">Для приюта</span>
         </td>
@@ -24,11 +22,13 @@
 </template>
 
 <script>
+import NeedService from "../../services/needs-service";
+
 export default {
   props: {
     headers: {
       type: Array,
-      default: () => ["Тип", "Название", "Количество", "Для кого"]
+      default: () => ["Тип", "Название", "Для кого"]
     },
     data: {
       type: Array,
@@ -36,12 +36,20 @@ export default {
         {
           type_name: "Еда",
           name: "Chicken nuggets",
-          quantity: null,
           pet_name: null,
           pet_id: null
+        },
+        {
+          type_name: "Еда",
+          name: "Hamburger",
+          pet_name: "Валера",
+          pet_id: 0
         }
       ]
     }
+  },
+  async beforeMount() {
+    this.$props.data = await NeedService.getNeeds();
   }
 };
 </script>
