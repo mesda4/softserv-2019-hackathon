@@ -16,7 +16,7 @@ OLINI team project at SoftServ 2019 Students Hackathon
 - register/  
 	login/  
 -	info/  
-/animal/  
+\t/animal/  
 -	list/  
 -	list1/  
 -	type/  
@@ -25,10 +25,10 @@ OLINI team project at SoftServ 2019 Students Hackathon
 
 Content-Type: application/json  
 {  
-|    "user":   
-|    {  
-||        "name": "user",  
-||        "password": "password"  
-|    }  
+    "user":   
+    {  
+        "name": "user",  
+        "password": "password"  
+    }  
 }  
 
