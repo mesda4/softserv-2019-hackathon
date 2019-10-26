@@ -1,0 +1,89 @@
+// COlORS
+$btn-color:#2bbbad;
+
+// GENERAL
+body {
+    background: #eee;
+    font: 16px/1.333 Arial, sans-serif;
+}
+
+button {
+    font: inherit;
+    border: none;
+}
+  
+.block {
+    background: #fff;
+    border-radius: 10px;
+    @extend .z-depth-4;
+}
+  
+// LOGIN
+.login-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    background: #888;
+}
+
+// FORMS
+.form {
+    width: 400px;
+    padding: 15px;
+}
+
+.form__title {
+    text-align: center;
+}
+
+.form__tabs {
+    display: flex;
+    width: 100%;
+}
+
+.form__tabs__tab {
+    width: 100%;
+    background: #fff;
+    padding-bottom: 10px;
+    border-bottom: 2px solid transparent;
+
+    &:hover,
+    &.router-link-active {
+        border-bottom-color: $btn-color;
+    }
+
+    &:focus {
+        background: transparent;
+    }
+
+    cursor: pointer;
+    transition: border-color .3s;
+}
+
+
+.form__btn-wrap {
+    text-align: center;
+}
+
+.input-field__warn {
+    @extend .helper-text, 
+            .red-text;
+
+    animation: slideToRight .3s 1;
+}
+
+@keyframes slideToRight {
+    from {
+        margin-left: -10px;
+    }
+    to {
+        margin-left: 0;
+    }
+}
