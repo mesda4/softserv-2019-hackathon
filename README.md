@@ -13,21 +13,21 @@ OLINI team project at SoftServ 2019 Students Hackathon
 
 /admin/  
 /auth/	register/  
-	login/  
-	info/  
+-	login/  
+-	info/  
 /animal/  
-	list/  
-	list1/  
-	type/  
+-	list/  
+-	list1/  
+-	type/  
 
 Пример запроса:  
 
 Content-Type: application/json  
 {  
-    "user":   
-    {  
-        "name": "user",  
-        "password": "password"  
-    }  
+-    "user":   
+-    {  
+--        "name": "user",  
+--        "password": "password"  
+-    }  
 }  
 
