@@ -16,13 +16,18 @@ const routes = [
     children:
     [
       {
+        path: "",
+        component: () => import("../modules/pets/Pets")
+      },
+      {
         path: 'needs',
         component: Needs
       },
       {
         path: "pets/:id",
         name: "pet",
-        component: () => import("../views/Pet.vue")
+        component: () => import("../views/Pet.vue"),
+        permissions: ["user", "stuff"]
       }
     ],
     meta: {
