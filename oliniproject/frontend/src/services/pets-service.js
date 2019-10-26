@@ -24,5 +24,9 @@ export default {
                 }
             });
         });
+    },
+
+    addPet() {
+        //TO DO
     }
 }
