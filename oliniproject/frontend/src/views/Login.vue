@@ -38,7 +38,7 @@
                     v-model.trim="$v.password.$model" 
                     class="input_styled"
                     :class="{'invalid': !$v.password.minLength || ($v.password.$dirty && !$v.password.required)}" 
-                    type="text" 
+                    type="password" 
                     placeholder="Password">
             </div>
 
@@ -75,7 +75,7 @@ export default {
         },
         password: {
             required,
-            minLength: minLength(8)
+            minLength: minLength(3)
         }
     },
     computed: {
@@ -89,11 +89,20 @@ export default {
                 this.$v.$touch();
                 return;
             }
+
             let form = {
-                email: this.email,
-                password: this.password
+                user: {
+                    email: this.email,
+                    password: this.password
+                }
             };
-            this.$store.dispatch("login", form);
+
+            if(this.mode === "log in") {
+                this.$store.dispatch("login", form);
+            }
+            else {
+                this.$store.dispatch("register", form);
+            }
         }
     }
 }
