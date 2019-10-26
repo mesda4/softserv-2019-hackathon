@@ -49,12 +49,3 @@ class AnimalView(CsrfExemptMixin, generics.GenericAPIView):
             return Response({'status': 'Error', 'message': str(serializer.errors)}, status=400)
 
 
-class AnimalsView(CsrfExemptMixin, generics.GenericAPIView):
-    serializer_class = AnimalsSerializer
-    #queryset=Animal.objects.all()
-    permission_classes = ( permissions.AllowAny, )
-
-    def get(self, request):
-        serializer = self.get_serializer(Animal.objects.all(), many=True)
-        return Response(serializer.data, status=200)
-
