@@ -8,5 +8,13 @@ export default {
 
     register(form) {
         return axios.post("https://hackathon.spdns.eu/auth/register/", form);
+    },
+
+    getRole() {
+        return axios.get("https://hackathon.spdns.eu/auth/info/", {
+            headers: {
+                ...authHeader
+            }
+        });
     }
 }

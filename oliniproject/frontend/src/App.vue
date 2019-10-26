@@ -4,6 +4,14 @@
   </div>
 </template>
 
+<script>
+export default {
+	created() {
+		this.$store.dispatch("getRole");
+	}
+}
+</script>
+
 <style lang="scss">
 	@import "~materialize-css/sass/components/color-variables";
 	@import "~materialize-css/sass/materialize.scss";

@@ -20,6 +20,11 @@
 
             <!-- EMAIL -->
             <div class="input-field">
+                <div v-if="errors.email">
+                    <div class="input-field__warn" v-for="(error, key) in errors.email" :key="key">
+                        {{error}}
+                    </div>
+                </div>
                 <div class="input-field__warn" v-if="$v.email.$dirty && !$v.email.required">Email is required</div>
                 <div class="input-field__warn" v-if="$v.email.$dirty && !$v.email.email">Email format is wrong</div>
                 <input 
@@ -66,7 +71,8 @@ import {required, minLength, email} from "vuelidate/lib/validators"
 export default {
     data: () => ({
         email: "",
-        password: ""
+        password: "",
+        errors: {}
     }),
     validations: {
         email: {
@@ -84,6 +90,10 @@ export default {
         }
     },
     methods: {
+        resetFields() {
+            this.email = "";
+            this.password = "";
+        },
         submitHandler() {
             if(this.$v.$invalid) {
                 this.$v.$touch();
@@ -101,7 +111,11 @@ export default {
                 this.$store.dispatch("login", form);
             }
             else {
-                this.$store.dispatch("register", form);
+                this.$store.dispatch("register", form)
+                .catch(errors => {
+                    this.errors = errors;
+                    this.resetFields();
+                });
             }
         }
     }

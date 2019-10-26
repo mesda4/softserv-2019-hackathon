@@ -1,5 +1,6 @@
-import Vue from "vue"
-import VueRouter from "vue-router"
+import Vue from "vue";
+import VueRouter from "vue-router";
+import store from "../store";
 
 import {getToken} from "../helpers/auth-helper";
 
@@ -12,13 +13,16 @@ const routes = [
     path: "/",
     name: "home",
     component: Home,
-    children: 
+    children:
     [
       {
       path: 'needs',
       component: Needs
       },
-    ]
+    ],
+    meta: {
+      permissions: ["guest", "user", "stuff"]
+    }
   },
   {
     path: "/login",
@@ -50,15 +54,30 @@ router.beforeEach((to, from, next) => {
   const {permissions} = to.meta;
 
   if(permissions) {
-    console.log(permissions);
-    console.log(permissions.find(role => role !== "guest"));
+    const token = getToken();
+    let role = "guest";
+
+    if(token) {
+      if(to.path === "/login" || to.path === "/register") {
+        return next({path: "/"});
+      }
+  
+      role = store.getters.getRole;
+      const hasPermission = permissions.includes(role);
+  
+      if(!hasPermission) {
+        return next({path: "/"});
+      }
+    }
+    else {
+      if(!permissions.includes(role)) {
+        if(to.path !== "/login" && to.path !== "/register") {
+          return next({path: "/login"});
+        }
+      }
+    }
   }
-  // if(permissions.find(role => role !== "guest"))
-
-  // const token = getToken();
-  // if(token) {
-
-  // }
+  
   next();
 });
 

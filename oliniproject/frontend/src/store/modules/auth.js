@@ -20,35 +20,54 @@ export default {
       state.user = userData;
     }
   },
+  getters: {
+    getRole(state) {
+        return state.user.is_staff ? "stuff" : "user";
+    }
+  },
   actions: {
     // REQUEST TO API
-    login({commit}, form) {
+    login({commit, dispatch}, form) {
         userService.login(form)
         .then(res => {
             console.log(res);
             if(res.status === 200) {
-                const userData = {
-                    email: res.data.name
-                };
-                commit("setUser", userData);
-
                 setToken(res.data.token);
-                router.push("home");
+                // dispatch("getRole");
+                router.push("/");
+            }
+        })
+        .catch(err => console.log(err.response));
+    },
+
+    register({commit, dispatch}, form) {
+      return new Promise((resolve, reject) => {
+        userService.register(form)
+        .then(res => {
+            if(res.status === 200) {
+                setToken(res.data.token);
+                router.push("/");
+                // dispatch("getRole");
+                resolve();
             }
         })
         .catch(err => {
-            console.log(err.response);
+            if(err.response) {
+                reject(err.response.data);
+            }
         });
+      });
     },
 
-    register({commit}, form) {
-      userService.register(form)
-        .then(userData => {
-            console.log(userData);
-        //   commit("setUser", userData);
-        //   commit("setAuthState", true);
-        });
-    },
+    getRole({commit}) {
+        userService.getRole()
+        .then(res => {
+            if(res.status === 200) {
+                commit("setUser", res.data);
+            }
+        })
+        .catch(err => console.log(err));
+    }
 
     // auth({commit}) {
     //   commit("setAuthState", true);

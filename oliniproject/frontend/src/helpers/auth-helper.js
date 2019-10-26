@@ -7,5 +7,5 @@ export const setToken = token => {
 }
 
 export const authHeader = {
-    "Authorization": getToken() ? "Bearer " + getToken().access_token : ""
+    "Authorization": getToken() ? "JWT " + getToken() : ""
 }
