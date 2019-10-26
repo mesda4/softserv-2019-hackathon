@@ -24,14 +24,14 @@ const routes = [
         path: "account",
         component: () => import("../views/Account.vue"),
         meta: {
-          permissions: ["guest", "user", "stuff"]
+          permissions: ["user", "stuff"]
         }
       },
       {
         path: "adminPanel",
         component: () => import("../views/AdminPanel.vue"),
         meta: {
-          permissions: ["guest", "user", "stuff"]
+          permissions: ["stuff"]
         }
       },
       {
