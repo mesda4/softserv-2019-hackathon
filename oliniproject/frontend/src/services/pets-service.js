@@ -7,10 +7,25 @@ const getToken = () => {
 
 export default {
     getPets() {
-        return axios.get("https://hackathon.spdns.eu/animal/list/", {
-            headers: {
-                "Authorization": getToken() ? "JWT " + getToken() : ""
-            }
+        // return axios.get("https://hackathon.spdns.eu/animal/list/", {
+        //     headers: {
+        //         "Authorization": getToken() ? "JWT " + getToken() : ""
+        //     }
+        // });
+        return new Promise((resolve, reject) => {
+            resolve({
+                status: 200,
+                data: [
+                    {
+                        id: 0,
+                        status: "В поиске"
+                    },
+                    {
+                        id: 1,
+                        status: "В поиске"
+                    }
+                ]
+            })
         });
     },
 

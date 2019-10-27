@@ -23,16 +23,27 @@
           </DropDown>
         </span>
       </span>
-      <span class="left">
-        <router-link
-          class="button"
-          to="/account"
-          tag="span"
-        >
-          <img class="icon" src="../assets/user.svg" />
-          <span>Аккаунт</span>
-        </router-link>
-      </span>
+      <div class="left">
+        <span class="left">
+          <router-link
+            class="button"
+            to="/account"
+            tag="span"
+          >
+            <img class="icon" src="../assets/user.svg" />
+            <span>Account</span>
+          </router-link>
+        </span>
+        <span v-if="Object.keys(user).length" class="left">
+          <span
+            class="button"
+            @click="logout"
+          >
+            <span>Log out</span>
+            <i class="material-icons right">keyboard_tab</i>
+          </span>
+        </span>
+      </div>
     </div>
     <div class="content">
       <router-view></router-view>
@@ -43,11 +54,23 @@
 <script>
 // @ is an alias to /src
 import DropDown from "bp-vuejs-dropdown";
+import router from "../router/index";
 
 export default {
   name: "home",
   components: { 
     DropDown 
+  },
+  methods: {
+    logout() {
+      localStorage.clear();
+      router.push("/login");
+    }
+  },
+  computed: {
+    user() {
+      return this.$store.state.auth.user;
+    }
   }
 };
 </script>
@@ -70,6 +93,7 @@ export default {
 }
 .button {
   cursor: pointer;
+  height: 50px;
   margin: 0 10px;
   display: flex;
   align-items: center;
@@ -86,14 +110,9 @@ export default {
   justify-content: center;
 }
 .content {
-// <<<<<<< HEAD
   max-width: 992px;
   margin: 0 auto;
   padding: 3rem;
-// =======
-//   padding: 6rem;
-//   width: 100%;
-// >>>>>>> d0d4fb6faf1b890ef057ddb123c172184a44e4e5
 }
 </style>
 
