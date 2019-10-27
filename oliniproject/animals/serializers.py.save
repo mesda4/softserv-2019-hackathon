@@ -1,0 +1,36 @@
+from rest_framework import serializers
+from data.models import *
+from animal.models import *
+from django.conf import settings
+
+
+class TypeSerializer(serializers.ModelSerializer):
+    type = serializers.CharField(required=True)
+    class Meta:
+        model=AnimalType
+        fields=['type' ]
+
+#class AnimalAdoptionSerilizer(serializers.ModelSerializer):
+    
+
+class AnimalPhotoSerializer(serializers.ModelSerializer):
+    serializers.PrimaryKeyRelatedField(many=False)
+    class Meta:
+        model=AnimalType
+        fields=['type' ]
+
+
+class AnimalSerializer(serializers.ModelSerializer):
+    uuid=serializers.ReadOnlyField()
+    name=serializers.CharField(required=True)
+    description=serializers.TextField(required=False)
+    id_type = TypeSerializer(many=False)
+    status = serializers.CharField(required=False)
+    type = serializers.PrimaryKeyRelatedField(many=True, read_only=True) 
+    photo_path = serializers.CharField(required=False)
+
+    class Meta:
+        model=Course
+        fields=['uuid', 'name', 'description', 'id_type', 'status', 'type', 'photo_path', ]
+
+    def create(self, validated_data)

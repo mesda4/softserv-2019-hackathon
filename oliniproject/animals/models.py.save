@@ -1,0 +1,19 @@
+from django.db import models
+from uuid import uuid4
+from data.models import *
+# Create your models here.
+
+class Animal(models.Model):
+    uuid=models.UUIDField(blank=False, default=uuid4, primary_key=True)
+    name = models.CharField(max_length=255, blank=False)
+    description = models.TextField(blank=True, null=True)
+    id_status = models.CharField
+(default=False)
+    
+
+class AnimalAdoptin(models.Model):
+    uuid=models.UUIDField(blank=False, default=uuid4, primary_key=True)
+    user=models.ManyToManyField(User)
+    animal=models.ForeignKey(Animal, on_delete=models.CASCADE)
+
+
