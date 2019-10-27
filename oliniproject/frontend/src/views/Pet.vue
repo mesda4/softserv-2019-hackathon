@@ -154,8 +154,8 @@ export default {
     transform: scaleY(1);
   }
 }
-<<<<<<< HEAD
-=======
+// <<<<<<< HEAD
+// =======
 
 .info {
   margin: 10px 0;
@@ -164,5 +164,5 @@ export default {
     font-weight: bold;
   }
 }
->>>>>>> d0d4fb6faf1b890ef057ddb123c172184a44e4e5
+// >>>>>>> d0d4fb6faf1b890ef057ddb123c172184a44e4e5
 </style>

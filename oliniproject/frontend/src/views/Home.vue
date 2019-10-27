@@ -86,14 +86,14 @@ export default {
   justify-content: center;
 }
 .content {
-<<<<<<< HEAD
+// <<<<<<< HEAD
   max-width: 992px;
   margin: 0 auto;
   padding: 3rem;
-=======
-  padding: 6rem;
-  width: 100%;
->>>>>>> d0d4fb6faf1b890ef057ddb123c172184a44e4e5
+// =======
+//   padding: 6rem;
+//   width: 100%;
+// >>>>>>> d0d4fb6faf1b890ef057ddb123c172184a44e4e5
 }
 </style>
 
